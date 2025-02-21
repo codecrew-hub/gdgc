@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Vocabulary Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .faq-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .faq-question {
+            background: ;
+            color: rgb(8, 8, 8);
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            background: #E5D9F2;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-container">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(0)">What is this website about?</div>
+            <div class="faq-answer">This website helps users enhance their vocabulary through gamified learning.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(1)">Is the platform free to use?</div>
+            <div class="faq-answer">We offer both free and paid courses for vocabulary improvement.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(2)">How do I enroll in a course?</div>
+            <div class="faq-answer">Click on the enroll button under any course to start learning.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(3)">Can I track my progress?</div>
+            <div class="faq-answer">Yes! Our platform tracks your learning progress and achievements.</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(index) {
+            const answers = document.querySelectorAll('.faq-answer');
+            answers[index].style.display = answers[index].style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
