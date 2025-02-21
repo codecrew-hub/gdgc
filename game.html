@@ -7,156 +7,71 @@
     <style>
         body {
             background: linear-gradient(to right, #ff9a9e, #c779d0, #a18cd1);
-    font-family: Arial, sans-serif;
-    padding: 20px;
-}
-
-.game-title {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.options {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-}
-
-.option {
-    cursor: pointer;
-    padding: 10px;
-    background-color: #362147; /* Updated color */
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    color: white; /* Text color for contrast */
-}
-
-.option:hover {
-    background-color: #362147; /* Slightly darker shade on hover */
-}
-
-.content {
-    display: none;
-    margin-top: 20px;
-}
-
-.crossword-block {
-    display: flex;
-    flex-direction: column;
-}
-
-.crossword-block button {
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #362147; /* Updated color */
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.crossword-block button:hover {
-    background-color: #362147; /* Slightly darker shade on hover */
-}
-
-/* Crossword Grid Styling */
-.crossword-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 40px);
-    grid-gap: 5px;
-    margin-top: 20px;
-}
-
-.crossword-cell {
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    border: 1px solid #ccc;
-    font-size: 20px;
-}
-
-.crossword-input {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    font-size: 20px;
-    border: 1px solid #ccc;
-    margin: 2px;
-}
-
-/* Clue Styling */
-.clue-list {
-    margin-top: 10px;
-}
-
-.clue {
-    margin-bottom: 10px;
-}
-
-/* Quiz Section Styling */
-.quiz-buttons {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-}
-
-.quiz-button {
-    cursor: pointer;
-    padding: 10px;
-    background-color: #362147; /* Updated color */
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    color: white; /* Text color for contrast */
-}
-
-.quiz-button:hover {
-    background-color: #362147; /* Slightly darker shade on hover */
-}
-
-.quiz-questions {
-    margin-top: 20px;
-}
-
-.question-container {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-.question {
-    margin-bottom: 10px;
-}
-
-.answer-option {
-    display: block;
-    margin-bottom: 5px;
-    cursor: pointer;
-    padding: 5px;
-}
-
-.answer-option:hover {
-    background-color: #f0f0f0;
-}
-
-.correct {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.incorrect {
-    background-color: #f44336;
-    color: white;
-}
-
-.feedback {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .game-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .option, .quiz-button, #enroll-button, #more-puzzles {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #362147;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            color: white;
+        }
+        .option:hover, .quiz-button:hover, #enroll-button:hover, #more-puzzles:hover {
+            background-color: #5a2d73;
+        }
+        .content {
+            display: none;
+            margin-top: 20px;
+        }
+        .crossword-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 40px);
+            grid-gap: 5px;
+            margin-top: 20px;
+        }
+        .crossword-cell, .crossword-input {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+            font-size: 20px;
+        }
+        .clue-list {
+            margin-top: 10px;
+        }
+        .question-container {
+            margin-bottom: 15px;
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+        .answer-option {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .correct {
+            background-color: lightgreen;
+        }
+        .incorrect {
+            background-color: lightcoral;
+        }
+        .feedback {
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -167,57 +82,11 @@
     </div>
 
     <div class="content" id="crossword-content">
-        <div class="crossword-block">
-            <div id="puzzle1">
-                <h3>Puzzle 1</h3>
-                <div class="crossword-grid">
-                    <!-- Crossword Puzzle 1 Grid -->
-                    <div class="crossword-cell">C</div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell">O</div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell">D</div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell">E</div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell">R</div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                </div>
-                <div class="clue-list">
-                    <div class="clue"><strong>Across:</strong> 1. A large bird (4 letters)</div>
-                    <div class="clue"><strong>Down:</strong> 1. A domestic animal (3 letters)</div>
-                </div>
-            </div>
-            <div id="puzzle2">
-                <h3>Puzzle 2</h3>
-                <div class="crossword-grid">
-                    <!-- Crossword Puzzle 2 Grid -->
-                    <div class="crossword-cell">S</div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell">T</div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell">E</div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell">A</div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                    <div class="crossword-cell">G</div>
-                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
-                </div>
-                <div class="clue-list">
-                    <div class="clue"><strong>Across:</strong> 1. A popular fruit (5 letters)</div>
-                    <div class="clue"><strong>Down:</strong> 1. A type of tree (3 letters)</div>
-                </div>
-            </div>
-            <button id="enroll-button">SUBMIT</button>
+        <div class="crossword-block" id="crossword-container">
         </div>
+        <button id="more-puzzles">Take More Puzzles</button>
+        <button id="enroll-button">SUBMIT</button>
+        <p id="result-message" style="font-weight: bold; margin-top: 10px;"></p>
     </div>
 
     <div class="content" id="quiz-content">
@@ -228,7 +97,6 @@
         </div>
 
         <div id="quiz-questions" class="quiz-questions" style="display: none;">
-            <!-- Quiz Questions will appear here -->
         </div>
     </div>
 
@@ -327,6 +195,49 @@
             const options = element.closest('.question').querySelectorAll('.answer-option');
             options.forEach(option => option.style.pointerEvents = 'none');
         }
+
+        // Crossword functionality (basic placeholder)
+        document.getElementById("more-puzzles").addEventListener("click", function() {
+            generateCrossword();
+        });
+
+        function generateCrossword() {
+            const crosswordContainer = document.getElementById("crossword-container");
+            crosswordContainer.innerHTML = '';
+
+            // Example crossword grid (5x5)
+            const grid = [
+                ['A', 'P', 'P', 'L', 'E'],
+                ['B', '', '', '', 'A'],
+                ['C', '', '', '', 'N'],
+                ['D', '', '', '', 'G'],
+                ['E', '', '', '', 'O']
+            ];
+
+            const gridHTML = document.createElement('div');
+            gridHTML.classList.add('crossword-grid');
+
+            for (let row = 0; row < grid.length; row++) {
+                for (let col = 0; col < grid[row].length; col++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('crossword-cell');
+                    if (grid[row][col] !== '') {
+                        cell.textContent = grid[row][col];
+                    } else {
+                        const input = document.createElement('input');
+                        input.type = 'text';
+                        input.maxLength = 1;
+                        input.classList.add('crossword-input');
+                        cell.appendChild(input);
+                    }
+                    gridHTML.appendChild(cell);
+                }
+            }
+            crosswordContainer.appendChild(gridHTML);
+        }
+
+        // Initial Crossword Generation
+        generateCrossword();
     </script>
 </body>
 </html>
