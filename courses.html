@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>WEBSITE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;900&family=Poppins:wght@100;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+           /* background-image: url("../images/bgimage.jpg");*/
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            background-color: #121212ea;
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .nav-menu li a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #121212;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+        }
+        .toggle-buttons {
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            background-color: #A294F9;
+            color: #ddd;
+            font-weight: bold;
+
+        }
+        button:hover {
+            background: #ddd;
+        }
+        .course-container {
+            display: none;
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        .course-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .enroll-button {
+            background: #A294F9;
+            color: white;
+            font-weight: bold;
+        }
+        .enroll-button:hover {
+            background: #A294F9;
+        }
+        .footer {
+  width: 100vw;
+  background-color: #121212ea;
+  color: white;
+  padding: 40px 80px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.footer a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 14px;
+}
+main{
+   margin-top: 5rem;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-social a {
+  width: 30px;
+  height: 30px;
+  border: 1px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  font-size: 18px;
+}
+
+.footer-social a:hover {
+  background-color: #A294F9;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+}
+.blog{
+  display :flex;
+  flex-direction: column;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="sidebar">
+            <div class="container1" onclick="toggleMenu()">
+                <span class="menu-icon"><i class="fas fa-bars"></i></span>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="courses.html">COURSES</a></li>
+            <li><a href="login.html">LOGIN</a></li>
+            <li><a href="games.html">GAMES</a></li>
+            <li><a href="events.html">EVENTS</a></li>
+        </ul>
+    </header>
+
+    <main>
+       <div class="blog">
+      <h1>Courses</h1>
+      <div class="toggle-buttons">
+          <button onclick="showCourse('free')">Free</button>
+          <button onclick="showCourse('paid')">Paid</button>
+      </div>
+    </div>
+      <br>
+      <div id="free-course" class="course-container">
+          <h2>Basic Grammar</h2>
+          <img src="https://files.oaiusercontent.com/file-9UEHCvYGDj16oT6QuJmRSx?se=2025-02-21T05%3A40%3A08Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dd1449071-f41a-410e-a996-ec30220f615b.webp&sig=cOXmjl4Gl0OB8Jpx289etzrIUdBOTijnLuQJz2ItWc0%3D" alt="Basic Grammar Course">
+          <br>
+          <button class="enroll-button" onclick="enroll('Basic Grammar')">Enroll</button>
+      </div>
+      
+      <div id="paid-course" class="course-container">
+          <h2>Learn from Expert Teachers and Faculty</h2>
+          
+          <br>
+          <button class="enroll-button" onclick="enroll('Expert Course')">Enroll</button>
+      </div>
+      
+      <script>
+          function showCourse(type) {
+              document.getElementById("free-course").style.display = type === 'free' ? 'block' : 'none';
+              document.getElementById("paid-course").style.display = type === 'paid' ? 'block' : 'none';
+          }
+  
+          function enroll(courseName) {
+              alert("You have enrolled in " + courseName + "!");
+              window.location.href = "page1.html";
+          }
+      </script>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <a href="#">FAQs</a><br>
+            <a href="#">Write a Review</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Support and Help</h3>
+            <a href="aboutus.html">About Us</a><br>
+            <a href="privacy.html">Privacy Policy</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Terms and Conditions</h3>
+        </div>
+
+        <div class="footer-column footer-social">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-menu").classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
