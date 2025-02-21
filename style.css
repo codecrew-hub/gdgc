@@ -7,7 +7,7 @@
 }
 body{
   
-  background-image: url("..//images/bgimage.jpg");
+  /*background-image: url("..//images/bgimage.jpg");*/
   margin: 0; 
   padding: 0; 
   background-size: cover; 
@@ -24,7 +24,7 @@ header{
   top: 0;
   z-index: 1000;
   background-color: #121212ea;
-  border-top: 2px solid #8a3efb67;
+  border-top: 2px solid rgb(255, 80, 124);
   width: 100vw;
   height: 10vh;
   display: flex;
@@ -74,10 +74,12 @@ header ul li a{
 .change .bar3 {
   transform: translate(0, -8px) rotate(45deg);
 }
-.welcome{
+.hero{
   backdrop-filter: blur(2px);  /* Apply a 10px blur to the background */
-  color: beige;
-  background-color: rgba(89, 48, 117, 0.42);  /* Semi-transparent background color */
+  color: rgb(255, 255, 255);
+  border: 2px, solid rgb(255, 80, 124);
+  background-color: rgba(3, 2, 3, 0.383);
+  padding: auto;
   display: flex;
   flex-direction: column;
   justify-self: center;
@@ -95,7 +97,7 @@ header ul li a{
   margin-top: 50%;
   justify-self: center;
   display: inline-block;
-  background-color: #cb59d1; /* Green background */
+  background-color:rgb(255, 80, 124); /* Green background */
   color: white;
   padding: 14px 24px; /* Some padding to make it larger */
   font-size: 18px;
