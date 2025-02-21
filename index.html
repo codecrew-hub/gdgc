@@ -7,222 +7,143 @@
     <title>WEBSITE</title>
     <link rel="stylesheet" href="style.css">
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;900&family=Poppins:wght@100;900&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-  
-  background-image: url("bgimage.jpg");
-  margin: 0; 
-  padding: 0; 
-  background-size: cover; 
-  background-repeat: no-repeat; 
-  background-attachment: fixed;
-  background-position: center; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-header{
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  background-color: #121212ea;
-  border-top: 2px solid #8a3efb67;
-  width: 100vw;
-  height: 10vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: opacity 0.2s ease;
-}
-header .hidden{
-  opacity: 0;
-  pointer-events: none;
-}
-.nav-bar{
-  backdrop-filter: blur(0.5rem) ;
-}
-.sidebar,header ul{
-  display: inline-block;
-  margin: 10px;
-  padding: 5px;
-}
-header ul,ul li a{
-  display: flex;
-  justify-content: space-evenly;
-  text-decoration: none;
-  list-style-type: none;
-}
-header ul li a{
-  color:white;
-  margin-left: 2rem;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+           /* background-image: url("../images/bgimage.jpg");*/
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
 
-.bar1, .bar2, .bar3 {
-  width: 1.5rem;
-  height: 3px;
-  background-color: #897894;
-  margin: 5px 0 2px 5px;
-  transition: 0.4s;
- 
-}
+        header {
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            background-color: #121212ea;
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
 
-.change .bar1 {
-  transform: translate(0, 8px) rotate(-45deg);
-}
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
 
-.change .bar2 {opacity: 0;}
+        .nav-menu {
+            display: flex;
+            list-style-type: none;
+        }
 
-.change .bar3 {
-  transform: translate(0, -8px) rotate(45deg);
-}
-.footer {
-  width: 100vw;
-  background-color: #121212ea;
-  color: white;
-  padding: 40px 80px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: auto;
-}
+        .nav-menu li a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
 
-.footer a {
-  color: whitesmoke;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-.footer h3 {
-  font-size: 16px;
-  margin-bottom: 15px;
-  color: white;
-}
-
-.footer-column {
-  flex: 1;
-  min-width: 200px;
-  margin-bottom: 20px;
-}
-
-.footer-social {
-  display: flex;
-  gap: 15px;
-}
-
-.footer-social a {
-  width: 30px;
-  height: 30px;
-  border: 1px solid white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: whitesmoke;
-  font-size: 18px;
-}
-
-.footer-social a:hover {
-  background-color: #A294F9;
-  color: white;
-}
-
-@media (max-width: 768px) {
-  .footer {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-  }
-}
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #121212;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body>
-    <header class="nav-bar">
+    <header>
         <div class="sidebar">
-            <div class="container1" onclick="myFunction(this)">
-                <a href="#">
-                    <div class="bar1"></div>
-                    <div class="bar2"></div>
-                    <div class="bar3"></div>
-                </a>
+            <div class="container1" onclick="toggleMenu()">
+                <span class="menu-icon"><i class="fas fa-bars"></i></span>
             </div>
         </div>
-        <div>
-            <ul>
-                <li><a href="courses.html">COURSES</a></li>
-                <li><a href="login.html">LOGIN</a></li>
-                <li><a href="games.html">GAMES</a></li>
-                <li><a href="events.html">EVENTS</a></li>
-            </ul>
-        </div>
+        <ul class="nav-menu">
+            <li><a href="courses.html">COURSES</a></li>
+            <li><a href="login.html">LOGIN</a></li>
+            <li><a href="games.html">GAMES</a></li>
+            <li><a href="events.html">EVENTS</a></li>
+        </ul>
     </header>
 
     <main>
         <div class="hero">
-          <div class="welcome">
-            ENHANCE YOUR VOCABULARY WITH US
-          
+            <h1>ENHANCE YOUR VOCABULARY WITH US</h1>
             <div class="button1">
                 <a href="courses.html" class="button">GET STARTED</a>
             </div>
-          </div>
         </div>
-        <footer class="footer">
-          <div class="footer-column">
-              <h3>Conatct Us</h3>
-              <a href="#">FAQs</a><br>
-              <a href="#">Write a Review</a>
-          </div>
-  
-          <div class="footer-column">
-              <h3>Support and Help</h3>
-              <a href="aboutus.html">About Us</a><br>
-              <a href="privacy.html">Privacy Policy</a>
-          </div>
-  
-          <div class="footer-column">
-              <h3>Terms and Conditions</h3>
-          </div>
-  
-          <div class="footer-column footer-social">
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-x-twitter"></i></a>
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
-      </footer>
-  
         
     </main>
 
+    <footer class="footer">
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <a href="#">FAQs</a><br>
+            <a href="#">Write a Review</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Support and Help</h3>
+            <a href="aboutus.html">About Us</a><br>
+            <a href="privacy.html">Privacy Policy</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Terms and Conditions</h3>
+        </div>
+
+        <div class="footer-column footer-social">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
     <script>
-        function myFunction(x) {
-            x.classList.toggle("change");
+        function toggleMenu() {
+            document.querySelector(".nav-menu").classList.toggle("active");
         }
-
-        const header = document.querySelector('header');
-        const heroSection = document.getElementById('hero-section');
-        window.addEventListener('scroll', () => {
-            const heroBottom = heroSection.getBoundingClientRect().bottom;
-            if (heroBottom <= 0) {
-                header.classList.add('hidden'); 
-            } else {
-                header.classList.remove('hidden'); 
-            }
-        });
     </script>
-
 </body>
 </html>
+
