@@ -1,6 +1,6 @@
 # gdgc
 HACK-ON
-This project was built during a hackathon to solve (problem statement)
+This project was built during a hackathon to solve (Create a gamified platform that helps users expand their vocabulary using challenges, quizzes, and puzzles.)
 
 Prerequisites:-
 Make sure you have the following installed on your system:
