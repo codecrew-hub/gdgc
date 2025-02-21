@@ -1,20 +1,27 @@
-# gdgc
-HACK-ON
+GDGC Hack-On
 This project was built during a hackathon to solve (Create a gamified platform that helps users expand their vocabulary using challenges, quizzes, and puzzles.)
 
-Prerequisites:-
-Make sure you have the following installed on your system:
-1)
-2)
-3)
+Features
 
-Installation:-
-Follow these steps to set up the project:
-1) Clone the repository to your local machine.
-2) Navigate to the project directory.
-3) Install the necessary dependencies for the project. 
+- 🎮 **Gamified Learning:** Engage in vocabulary-building through fun challenges.
+- ❓ **Quizzes & Puzzles:** Test your knowledge with interactive quizzes and puzzles.
+- 🌍 **Multi-Page Navigation:** Explore different vocabulary topics across multiple web pages.
+- 🎯 **Progress Tracking:** Monitor your achievements as you complete challenges.
+- 🏆 **Certificate Generation:** Download a certificate upon successful completion of the program.
 
-Running the Project:-
-1) step 1.
-2) step 2.
-3) step 3.
+Technologies Used
+
+- Frontend:HTML, CSS, JavaScript
+- Development Tools: Visual Studio Code (VS Code)
+
+Installation & Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/codecrew-hub/gdgc.git
+
+Contributors
+- Ojas Dhapse (Team Leader of The Code Crew)
+- Deveshree Dhobe
+- Soham Diwe
+- Mayank Patle
