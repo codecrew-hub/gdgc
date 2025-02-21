@@ -51,27 +51,6 @@
         .clue-list {
             margin-top: 10px;
         }
-        .question-container {
-            margin-bottom: 15px;
-        }
-        .question {
-            margin-bottom: 10px;
-        }
-        .answer-option {
-            padding: 5px 10px;
-            border: 1px solid #ccc;
-            margin-right: 5px;
-            cursor: pointer;
-        }
-        .correct {
-            background-color: lightgreen;
-        }
-        .incorrect {
-            background-color: lightcoral;
-        }
-        .feedback {
-            margin-top: 5px;
-        }
     </style>
 </head>
 <body>
@@ -82,41 +61,83 @@
     </div>
 
     <div class="content" id="crossword-content">
-        <div class="crossword-block" id="crossword-container">
-        </div>
+        <div class="crossword-block" id="crossword-container"></div>
         <button id="more-puzzles">Take More Puzzles</button>
         <button id="enroll-button">SUBMIT</button>
         <p id="result-message" style="font-weight: bold; margin-top: 10px;"></p>
     </div>
-
     <div class="content" id="quiz-content">
-        <div class="quiz-buttons">
-            <div class="quiz-button" id="quiz1-button">Quiz 1</div>
-            <div class="quiz-button" id="quiz2-button">Quiz 2</div>
-            <div class="quiz-button" id="quiz3-button">Quiz 3</div>
-        </div>
+      <div class="quiz-buttons">
+          <div class="quiz-button" id="quiz1-button">Quiz 1</div>
+          <div class="quiz-button" id="quiz2-button">Quiz 2</div>
+          <div class="quiz-button" id="quiz3-button">Quiz 3</div>
+      </div>
 
-        <div id="quiz-questions" class="quiz-questions" style="display: none;">
-        </div>
-    </div>
+      <div id="quiz-questions" class="quiz-questions" style="display: none;">
+      </div>
+  </div>
 
     <script>
-        // Toggling between crossword and quiz
         document.getElementById("crossword-option").addEventListener("click", function() {
             document.getElementById("crossword-content").style.display = "block";
-            document.getElementById("quiz-content").style.display = "none";
         });
 
-        document.getElementById("quiz-option").addEventListener("click", function() {
+        document.getElementById("more-puzzles").addEventListener("click", function() {
+            addPuzzle();
+        });document.getElementById("quiz-option").addEventListener("click", function() {
             document.getElementById("crossword-content").style.display = "none";
             document.getElementById("quiz-content").style.display = "block";
         });
 
-        // Enroll button action
-        document.getElementById("enroll-button").addEventListener("click", function() {
-            alert("You have submitted the crossword puzzles!");
-        });
+        function addPuzzle() {
+            const puzzles = [
+                { word: "APPLE", clue: "A popular fruit" },
+                { word: "TIGER", clue: "A big wild cat" },
+                { word: "HOUSE", clue: "Where we live" },
+                { word: "WATER", clue: "Essential for life" },
+                { word: "CHAIR", clue: "Used for sitting" },
+                { word: "LIGHT", clue: "Opposite of dark" },
+                { word: "PLANE", clue: "Used for flying" },
+                { word: "STARS", clue: "Visible in the night sky" },
+                { word: "EARTH", clue: "Our planet" },
+                { word: "SMILE", clue: "Expression of happiness" }
+            ];
 
+            const puzzleContainer = document.getElementById("crossword-container");
+            puzzleContainer.innerHTML = "";
+            const randomIndex = Math.floor(Math.random() * puzzles.length);
+            const puzzle = puzzles[randomIndex];
+            
+            let puzzleHTML = `
+                <div class="crossword-grid">
+                    ${puzzle.word.split('').map(letter => `<div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>`).join('')}
+                </div>
+                <div class="clue-list"><strong>Clue:</strong> ${puzzle.clue}</div>
+            `;
+            
+            let puzzleDiv = document.createElement("div");
+            puzzleDiv.innerHTML = puzzleHTML;
+            puzzleContainer.appendChild(puzzleDiv);
+            
+            puzzleDiv.dataset.answer = puzzle.word;
+        }
+
+        document.getElementById("enroll-button").addEventListener("click", function() {
+            const puzzleDiv = document.querySelector(".crossword-block > div");
+            if (!puzzleDiv) return;
+            const correctAnswer = puzzleDiv.dataset.answer;
+            const inputs = puzzleDiv.querySelectorAll(".crossword-input");
+            let userAnswer = "";
+            inputs.forEach(input => userAnswer += input.value.toUpperCase());
+            
+            if (userAnswer === correctAnswer) {
+                document.getElementById("result-message").textContent = "Correct Answer! 🎉";
+                document.getElementById("result-message").style.color = "green";
+            } else {
+                document.getElementById("result-message").textContent = "Wrong Answer. Try Again! ❌";
+                document.getElementById("result-message").style.color = "red";
+            }
+        });
         // Quiz Button Actions
         document.getElementById("quiz1-button").addEventListener("click", function() {
             displayQuiz(1);
@@ -196,48 +217,6 @@
             options.forEach(option => option.style.pointerEvents = 'none');
         }
 
-        // Crossword functionality (basic placeholder)
-        document.getElementById("more-puzzles").addEventListener("click", function() {
-            generateCrossword();
-        });
-
-        function generateCrossword() {
-            const crosswordContainer = document.getElementById("crossword-container");
-            crosswordContainer.innerHTML = '';
-
-            // Example crossword grid (5x5)
-            const grid = [
-                ['A', 'P', 'P', 'L', 'E'],
-                ['B', '', '', '', 'A'],
-                ['C', '', '', '', 'N'],
-                ['D', '', '', '', 'G'],
-                ['E', '', '', '', 'O']
-            ];
-
-            const gridHTML = document.createElement('div');
-            gridHTML.classList.add('crossword-grid');
-
-            for (let row = 0; row < grid.length; row++) {
-                for (let col = 0; col < grid[row].length; col++) {
-                    const cell = document.createElement('div');
-                    cell.classList.add('crossword-cell');
-                    if (grid[row][col] !== '') {
-                        cell.textContent = grid[row][col];
-                    } else {
-                        const input = document.createElement('input');
-                        input.type = 'text';
-                        input.maxLength = 1;
-                        input.classList.add('crossword-input');
-                        cell.appendChild(input);
-                    }
-                    gridHTML.appendChild(cell);
-                }
-            }
-            crosswordContainer.appendChild(gridHTML);
-        }
-
-        // Initial Crossword Generation
-        generateCrossword();
     </script>
 </body>
 </html>
