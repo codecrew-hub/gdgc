@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Header & Footer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #a913f4, #02fbff);
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #8a0dea;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease-in-out;
+        }
+        nav ul li a:hover {
+            color: #2563eb;
+        }
+        footer {
+            background-color:   #121212ea;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        footer ul li {
+            margin: 0 15px;
+        }
+        footer ul li a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s ease-in-out;
+        }
+        footer ul li a:hover {
+            color: #60a5fa;
+        }
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: separate;
+            border-spacing: 15px;
+        }
+        td {
+            border: 2px solid #8a0dea;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            background: linear-gradient(to left, #a913f4, #02fbff);           
+            cursor: pointer;
+
+        }
+        td a {
+    text-decoration: none;
+    color: white; /* Ensures the link inside remains white */
+}
+        td:hover {
+            background-color: #d1b3ff;
+        }
+        #a{
+            color: rgb(1, 0, 0);
+        }
+        button{
+            background-color:rgb(255, 255, 255);
+            margin: 10px;
+            border-radius: 10px;
+            height: 40px;
+            width:80px;
+            font-weight: bolder;
+        }
+    header{
+  
+  top: 0;
+  z-index: 1000;
+  background-color: #121212ea;
+  border-top: 2px solid #8a3efb67;
+  width: 100%;
+  height: 50PX;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+header .hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-bar{
+  backdrop-filter: blur(0.5rem) ;
+}
+.sidebar,header ul{
+  display: inline-block;
+  margin: 10px;
+  padding: 5px;
+}
+header ul,ul li a{
+  display: flex;
+  justify-content: space-evenly;
+  text-decoration: none;
+  list-style-type: none;
+}
+header ul li a{
+  color:white;
+  margin-left: 2rem;
+}
+.change .bar1 {
+  transform: translate(0, 8px) rotate(-45deg);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  transform: translate(0, -8px) rotate(45deg);
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    
+
+    <!-- Main Content Placeholder -->
+    <main>
+        <h1>Welcome to DAY 1</h1>
+        <p>LEARN ENGLISH LANGUAGE PRONOUNCIATION</p>
+        <table>
+            <script>
+                let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                let links = [
+                    'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=0m0s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=0m26s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=0m36s',
+                        'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=0m49s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=01m02s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=01m15s',
+                        'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=01m28s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=01m37s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=01m49s',
+                        'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=01m57s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=02m08s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=02m20s',
+                        'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=02m32s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=02m41s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=02m51s',
+                        'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=03m02s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=03m11s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=03m22s',
+                        'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=03m35s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=03m44s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=3m54s',
+                        'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=04m07s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=04m17s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=04m26s',
+                        'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=04m36s', 'https://youtu.be/drlIUqRYM-w?si=pEgbVa8HVng1Hmvs&t=04m50s'
+                ];
+        
+                let tableHTML = "<tbody>";
+                for (let i = 0; i < alphabet.length; i++) {
+                    if (i % 6 === 0) tableHTML += "<tr>"; // Start new row every 6 elements
+                    tableHTML += `<td><a href="${links[i]}" target="_blank">${alphabet[i]}</a></td>`;
+                    if (i % 6 === 5 || i === alphabet.length - 1) tableHTML += "</tr>"; // Close row after 6 elements
+                }
+                tableHTML += "</tbody>";
+                document.write(tableHTML);
+            </script>
+        </table>
+        
+    </main>
+    
+  
+    <!-- Footer -->
+     <br>
+    <center><a href="page2.html"><button>Next</button></a>
+    </center> 
+</body>
+</html>
+

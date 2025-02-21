@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Comprehension</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #c779d0, #a18cd1);
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.2); /* Transparent white */
+    backdrop-filter: blur(12px); /* Glass effect */
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+        .question-box {
+            margin-top: 20px;
+            text-align: left;
+        }
+        textarea {
+            width: 100%;
+            height: 70px;
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        textarea:focus {
+            border-color: #ff4500;
+            outline: none;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            background: #ff4500;
+            color: white;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #e63900;
+            transform: scale(1.05);
+        }
+        .feedback {
+            margin-top: 20px;
+            display: none;
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            color: #155724;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .timer {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff4500;
+            margin-bottom: 15px;
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        .score {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Reading Comprehension</h2>
+        <div class="timer" id="timer">Time Left: 60s</div>
+        <p><strong>Read the following paragraph carefully:</strong></p>
+        <p>
+            The sun is the closest star to Earth and the center of our solar system. 
+            It provides light and heat, making life possible on our planet. 
+            The sun is a massive ball of hot gases, primarily composed of hydrogen and helium. 
+            It generates energy through nuclear fusion, a process that releases immense amounts of heat and light. 
+            Additionally, the sun's gravitational pull keeps all the planets in orbit. 
+            Without the sun, Earth would be a frozen world, incapable of supporting life. 
+            Over the years, scientists have studied solar activity to understand its impact on Earth's climate and technology. 
+            Solar flares and sunspots affect satellite communications and power grids. 
+            The sun also plays a vital role in Earth's weather patterns, ocean currents, and seasonal changes.
+        </p>
+        
+        <div class="question-box">
+            <p><strong>Question 1:</strong> What is the primary composition of the sun?</p>
+            <textarea id="answer1" placeholder="Type your answer here..."></textarea>
+        </div>
+        
+        <div class="question-box">
+            <p><strong>Question 2:</strong> How does the sun generate energy?</p>
+            <textarea id="answer2" placeholder="Type your answer here..."></textarea>
+        </div>
+        
+        <div class="question-box">
+            <p><strong>Question 3:</strong> What role does the sun play in the solar system?</p>
+            <textarea id="answer3" placeholder="Type your answer here..."></textarea>
+        </div>
+        
+        <div class="question-box">
+            <p><strong>Question 4:</strong> How does the sun affect Earth's climate?</p>
+            <textarea id="answer4" placeholder="Type your answer here..."></textarea>
+        </div>
+        
+        <div class="question-box">
+            <p><strong>Question 5:</strong> What are solar flares and how do they impact technology?</p>
+            <textarea id="answer5" placeholder="Type your answer here..."></textarea>
+        </div>
+        
+        <button onclick="submitAnswers()">Submit Answers</button>
+        <div class="feedback" id="feedback">Thank you for your submission! Your answers have been recorded.</div>
+        <div class="score" id="score"></div>
+    </div>
+    
+    <script>
+        let timeLeft = 300;
+        const timerElement = document.getElementById("timer");
+        let timerInterval = setInterval(updateTimer, 1000);
+        
+        function updateTimer() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                timerElement.textContent = `Time Left: ${timeLeft}s`;
+            } else {
+                clearInterval(timerInterval);
+                alert("Time is up! Please submit your answers.");
+            }
+        }
+
+        function submitAnswers() {
+            clearInterval(timerInterval);
+            timerElement.textContent = "Time Stopped";
+            timerElement.style.color = "green";
+            document.getElementById("feedback").style.display = "block";
+            
+            let correctAnswers = ["hydrogen and helium", "nuclear fusion", "keeps planets in orbit", "affects climate", "affects satellites"];
+            let userAnswers = [
+                document.getElementById("answer1").value.toLowerCase().trim(),
+                document.getElementById("answer2").value.toLowerCase().trim(),
+                document.getElementById("answer3").value.toLowerCase().trim(),
+                document.getElementById("answer4").value.toLowerCase().trim(),
+                document.getElementById("answer5").value.toLowerCase().trim()
+            ];
+            
+            let score = 0;
+            for (let i = 0; i < correctAnswers.length; i++) {
+                if (userAnswers[i].includes(correctAnswers[i])) {
+                    score++;
+                }
+            }
+            
+            let scoreElement = document.getElementById("score");
+            scoreElement.textContent = `Your Score: ${score}/5`;
+            scoreElement.style.display = "block";
+        }
+    </script>
+    <br>
+    <center><a href="page4.html"><button>Previous</button></a>
+        <a href="page6.html"><button>Next</button></a></center>
+</body>
+</html>

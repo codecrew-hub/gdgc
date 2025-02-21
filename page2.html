@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Header & Footer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff9a9e, #c779d0, #a18cd1);
+
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #8a0dea;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease-in-out;
+        }
+        nav ul li a:hover {
+            color: #2563eb;
+        }
+        footer {
+            background-color:   #121212ea;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        footer ul li {
+            margin: 0 15px;
+        }
+        footer ul li a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s ease-in-out;
+        }
+        footer ul li a:hover {
+            color: #60a5fa;
+        }
+        header{
+  
+  top: 0;
+  z-index: 1000;
+  background-color: #121212ea;
+  border-top: 2px solid #8a3efb67;
+  width: 100%;
+  height: 50PX;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+header .hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-bar{
+  backdrop-filter: blur(0.5rem) ;
+}
+.sidebar,header ul{
+  display: inline-block;
+  margin: 10px;
+  padding: 5px;
+}
+header ul,ul li a{
+  display: flex;
+  justify-content: space-evenly;
+  text-decoration: none;
+  list-style-type: none;
+}
+header ul li a{
+  color:white;
+  margin-left: 2rem;
+}
+.change .bar1 {
+  transform: translate(0, 8px) rotate(-45deg);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  transform: translate(0, -8px) rotate(45deg);
+}
+.container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .box {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)); /* Gradient with transparency */
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Blurring effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    color: rgb(0, 0, 0); /* Text color */
+    text-align: center;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+        a {
+            display: block;
+            margin-top: 10px;
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #5a0bb5;
+        }
+        #a{
+            color: rgb(1, 0, 0);
+        }
+        #p1{
+            text-align: center;
+        }
+        .b1{
+            background-color: #280155;
+        }
+        .p2{
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="nav-bar">
+        <div class="sidebar">
+            <div class="container1" onclick="myFunction(this)">
+                <a href="#">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </a>
+            </div>
+        </div>
+        <div>
+            <ul>
+                <li><a href="courses.html">COURSES</a></li>
+                <li><a href="login.html">LOGIN</a></li>
+                <li><a href="games.html">GAMES</a></li>
+                <li><a href="events.html">EVENTS</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <h1 id="p1">Parts of Speech</h1>
+    <div class="container">
+        <div class="box">
+            <h2 class="p2">Noun</h2>
+            <p class="gradient-text">A noun is a word that names a person, place, thing, or idea.</p>
+            <a href="https://youtu.be/6h3V-Tm_tNs?si=4QIkzdH4jLDZfsPQ" target="_blank">Watch Video</a>
+        </div>
+        <div class="box">
+            <h2 class="p2">Pronoun</h2>
+            <p>A pronoun is a word that takes the place of a noun.</p>
+            <a href="https://youtu.be/B_yEh8rdkUc?si=KRZdF_NbY2dcBMVc" target="_blank">Watch Video</a>
+        </div>
+        <div class="box">
+            <h2 class="p2">Verb</h2>
+            <p>A verb expresses action or state of being.</p>
+            <a href="https://youtu.be/2NR4GFHwYSk?si=25KQmmpDAhc9gAHw" target="_blank">Watch Video</a>
+        </div>
+        <div class="box">
+            <h2 class="p2">Adjective</h2>
+            <p>An adjective describes a noun or pronoun.</p>
+            <a href="https://youtu.be/WPT1uzNSWBk?si=Qqrk6CZKtquFkDR7" target="_blank">Watch Video</a>
+        </div>
+        <div class="box">
+            <h2 class="p2">Adverb</h2>
+            <p>An adverb modifies a verb, adjective, or another adverb.</p>
+            <a href="https://youtu.be/94aFcx6oliY?si=hch2ssCK0Z9cpYdd" target="_blank">Watch Video</a>
+        </div>
+        <div class="box">
+            <h2 class="p2">Preposition</h2>
+            <p>A preposition shows the relationship between a noun (or pronoun) and another word.</p>
+            <a href="https://youtu.be/iyjny2WAKcg?si=Z-X9TdBUaUTUqIC_" target="_blank">Watch Video</a>
+        </div>
+        <div class="box">
+            <h2 class="p2">Conjunction</h2>
+            <p>A conjunction connects words, phrases, or clauses.</p>
+            <a href="https://youtu.be/dGAEvyDdYQA?si=VTOnBGk80bkh2WcB" target="_blank">Watch Video</a>
+        </div>
+        <div class="box">
+            <h2 class="p2">Interjection</h2>
+            <p>An interjection is a word that expresses strong emotion.</p>
+            <a href="https://youtu.be/KQB-0wi4i34?si=wGV-eG8Tbm5dpEPw" target="_blank">Watch Video</a>
+        </div>
+    </div>
+
+     <!-- Footer -->
+     <br>
+     <a href="page1.html"><button value="Next" class="b1">Previous</button></a> 
+
+     <a href="page3.html"><button value="Next" class="b1">Next</button></a> 
+
+</body>
+</html>

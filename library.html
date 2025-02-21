@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Meaning Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff9a9e, #c779d0, #a18cd1);
+            padding: 20px;
+        }
+        .container {
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.2); /* Transparent white for glass effect */
+    backdrop-filter: blur(12px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for depth */
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            background: #ff4500;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e63900;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: left;
+            padding: 10px;
+            background: #f4f4f4;
+            border-radius: 10px;
+        }
+        button {
+            background: #ff4500;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Search for Word Meaning</h2>
+        <input type="text" id="wordInput" placeholder="Enter a word or phrase...">
+        <button onclick="searchWord()">Search</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        async function searchWord() {
+            let query = document.getElementById("wordInput").value.trim().toLowerCase();
+            if (!query) {
+                document.getElementById("result").innerHTML = "Please enter a word or phrase.";
+                return;
+            }
+            
+            try {
+                let response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`);
+                let results = "";
+                
+                if (!response.ok) {
+                    results = `<strong>${query}:</strong> No definition found in API. Using fallback dictionary.`;
+                    let fallbackMeaning = fallbackDictionary[query];
+                    if (fallbackMeaning) {
+                        results += `<br><strong>Word:</strong> ${query}<br><strong>Meaning:</strong> ${fallbackMeaning}`;
+                    } else {
+                        results += `<br>No definition available.`;
+                    }
+                } else {
+                    let data = await response.json();
+                    let meanings = data[0].meanings.map(m => `<strong>${m.partOfSpeech}:</strong> ${m.definitions[0].definition}`).join("<br>");
+                    results = `<strong>Word:</strong> ${query}<br><strong>Meaning:</strong><br>${meanings}<br>`;
+                }
+                
+                let category = categorizeWord(query);
+                results += `<strong>Category:</strong> ${category}<br><br>`;
+                document.getElementById("result").innerHTML = results;
+            } catch (error) {
+                document.getElementById("result").innerHTML = "Error fetching data. Please try again later.";
+            }
+        }
+        
+        function categorizeWord(word) {
+            const scienceWords = ["gravity", "atom", "molecule", "energy", "physics", "blackhole", "quantum", "neutron", "electron", "galaxy", "evolution", "electric current", "photosynthesis", "thermodynamics", "DNA", "cell", "nucleus", "mitosis", "virus", "bacteria", "antibody", "mutation", "ecosystem", "fossil", "telescope", "gene", "plasma", "volcano", "climate", "acid", "base", "enzyme", "neuron", "quantum mechanics", "magnetism", "relativity", "solar system", "botany", "zoology", "genetics"];
+            const businessWords = ["investment", "profit", "market", "economy", "entrepreneur", "finance", "stocks", "trade", "business", "capital", "revenue", "assets", "liabilities", "strategy", "marketing", "merger", "acquisition", "inflation", "dividend", "loan", "bankruptcy", "monopoly", "startup", "taxation", "budgeting", "auditing", "negotiation", "branding"];
+            const techWords = ["algorithm", "data", "software", "hardware", "cloud", "AI", "machine learning", "robotics", "cybersecurity", "blockchain", "encryption", "big data", "IoT", "quantum computing", "5G", "automation", "deep learning", "data mining", "firewall", "open-source", "database", "networking", "web development", "frontend", "backend"];
+            
+            if (scienceWords.includes(word)) {
+                return "Science";
+            } else if (businessWords.includes(word)) {
+                return "Business";
+            } else if (techWords.includes(word)) {
+                return "Technology";
+            } else {
+                return "Everyday Language";
+            }
+        }
+        
+        const fallbackDictionary = {
+            "electric current": "A flow of electric charge.",
+            "computer": "An electronic device that processes data.",
+            "investment": "The action of investing money for profit.",
+            "blackhole": "A region of space having a gravitational field so intense that no matter or radiation can escape.",
+            "gravity": "The force that attracts a body toward the center of the earth.",
+            "economy": "The wealth and resources of a country or region.",
+            "data": "Facts and statistics collected for analysis.",
+            "photosynthesis": "The process by which green plants and some other organisms use sunlight to synthesize foods with carbon dioxide and water.",
+            "thermodynamics": "The branch of physical science that deals with the relations between heat and other forms of energy.",
+            "DNA": "Deoxyribonucleic acid, a molecule that carries genetic instructions for the development and functioning of living organisms.",
+            "nucleus": "The central and most important part of an atom, cell, or organization.",
+            "mitosis": "A process of cell division that results in two daughter cells each having the same number and kind of chromosomes as the parent nucleus."
+        };
+    </script>
+    <br> <br>
+    <center><a href="index.html"><button class="b6">Home </button></a></center>
+</body>
+</html>

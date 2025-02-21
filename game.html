@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Page</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff9a9e, #c779d0, #a18cd1);
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.game-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.option {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #362147; /* Updated color */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    color: white; /* Text color for contrast */
+}
+
+.option:hover {
+    background-color: #362147; /* Slightly darker shade on hover */
+}
+
+.content {
+    display: none;
+    margin-top: 20px;
+}
+
+.crossword-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.crossword-block button {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #362147; /* Updated color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.crossword-block button:hover {
+    background-color: #362147; /* Slightly darker shade on hover */
+}
+
+/* Crossword Grid Styling */
+.crossword-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 40px);
+    grid-gap: 5px;
+    margin-top: 20px;
+}
+
+.crossword-cell {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #ccc;
+    font-size: 20px;
+}
+
+.crossword-input {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    margin: 2px;
+}
+
+/* Clue Styling */
+.clue-list {
+    margin-top: 10px;
+}
+
+.clue {
+    margin-bottom: 10px;
+}
+
+/* Quiz Section Styling */
+.quiz-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.quiz-button {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #362147; /* Updated color */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    color: white; /* Text color for contrast */
+}
+
+.quiz-button:hover {
+    background-color: #362147; /* Slightly darker shade on hover */
+}
+
+.quiz-questions {
+    margin-top: 20px;
+}
+
+.question-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.question {
+    margin-bottom: 10px;
+}
+
+.answer-option {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.answer-option:hover {
+    background-color: #f0f0f0;
+}
+
+.correct {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.incorrect {
+    background-color: #f44336;
+    color: white;
+}
+
+.feedback {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <div class="game-title">Game</div>
+    <div class="options">
+        <div class="option" id="crossword-option">Crossword</div>
+        <div class="option" id="quiz-option">Quiz</div>
+    </div>
+
+    <div class="content" id="crossword-content">
+        <div class="crossword-block">
+            <div id="puzzle1">
+                <h3>Puzzle 1</h3>
+                <div class="crossword-grid">
+                    <!-- Crossword Puzzle 1 Grid -->
+                    <div class="crossword-cell">C</div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell">O</div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell">D</div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell">E</div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell">R</div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                </div>
+                <div class="clue-list">
+                    <div class="clue"><strong>Across:</strong> 1. A large bird (4 letters)</div>
+                    <div class="clue"><strong>Down:</strong> 1. A domestic animal (3 letters)</div>
+                </div>
+            </div>
+            <div id="puzzle2">
+                <h3>Puzzle 2</h3>
+                <div class="crossword-grid">
+                    <!-- Crossword Puzzle 2 Grid -->
+                    <div class="crossword-cell">S</div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell">T</div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell">E</div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell">A</div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                    <div class="crossword-cell">G</div>
+                    <div class="crossword-cell"><input class="crossword-input" type="text" maxlength="1"></div>
+                </div>
+                <div class="clue-list">
+                    <div class="clue"><strong>Across:</strong> 1. A popular fruit (5 letters)</div>
+                    <div class="clue"><strong>Down:</strong> 1. A type of tree (3 letters)</div>
+                </div>
+            </div>
+            <button id="enroll-button">SUBMIT</button>
+        </div>
+    </div>
+
+    <div class="content" id="quiz-content">
+        <div class="quiz-buttons">
+            <div class="quiz-button" id="quiz1-button">Quiz 1</div>
+            <div class="quiz-button" id="quiz2-button">Quiz 2</div>
+            <div class="quiz-button" id="quiz3-button">Quiz 3</div>
+        </div>
+
+        <div id="quiz-questions" class="quiz-questions" style="display: none;">
+            <!-- Quiz Questions will appear here -->
+        </div>
+    </div>
+
+    <script>
+        // Toggling between crossword and quiz
+        document.getElementById("crossword-option").addEventListener("click", function() {
+            document.getElementById("crossword-content").style.display = "block";
+            document.getElementById("quiz-content").style.display = "none";
+        });
+
+        document.getElementById("quiz-option").addEventListener("click", function() {
+            document.getElementById("crossword-content").style.display = "none";
+            document.getElementById("quiz-content").style.display = "block";
+        });
+
+        // Enroll button action
+        document.getElementById("enroll-button").addEventListener("click", function() {
+            alert("You have submitted the crossword puzzles!");
+        });
+
+        // Quiz Button Actions
+        document.getElementById("quiz1-button").addEventListener("click", function() {
+            displayQuiz(1);
+        });
+
+        document.getElementById("quiz2-button").addEventListener("click", function() {
+            displayQuiz(2);
+        });
+
+        document.getElementById("quiz3-button").addEventListener("click", function() {
+            displayQuiz(3);
+        });
+
+        function displayQuiz(quizNumber) {
+            const quizQuestionsContainer = document.getElementById("quiz-questions");
+            quizQuestionsContainer.style.display = "block";
+
+            let questions = [];
+
+            if (quizNumber === 1) {
+                questions = [
+                    { question: "What is the plural of 'child'?", options: ['Children', 'Childs', 'Childes'], answer: 'Children' },
+                    { question: "Choose the correct sentence.", options: ['I can speaks English.', 'I can speak English.', 'I can speaking English.'], answer: 'I can speak English.' },
+                    { question: "Which word is an adjective?", options: ['Quickly', 'Run', 'Fast'], answer: 'Fast' },
+                    { question: "What is the past tense of 'go'?", options: ['Go', 'Went', 'Gone'], answer: 'Went' },
+                    { question: "Which sentence is correct?", options: ['She don\'t like it.', 'She doesn\'t like it.', 'She didn\'t like it.'], answer: 'She doesn\'t like it.' }
+                ];
+            } else if (quizNumber === 2) {
+                questions = [
+                    { question: "What is the plural of 'foot'?", options: ['Feet', 'Foots', 'Feets'], answer: 'Feet' },
+                    { question: "Choose the correct form of the verb: 'I ____ to the store.'", options: ['go', 'going', 'gone'], answer: 'go' },
+                    { question: "What is the superlative form of 'big'?", options: ['Biggest', 'Bigger', 'Biggestest'], answer: 'Biggest' },
+                    { question: "Which sentence is in the past tense?", options: ['She is eating dinner.', 'She eats dinner.', 'She ate dinner.'], answer: 'She ate dinner.' },
+                    { question: "Choose the correct sentence.", options: ['He have a car.', 'He has a car.', 'He had a car.'], answer: 'He has a car.' }
+                ];
+            } else if (quizNumber === 3) {
+                questions = [
+                    { question: "Which is a preposition?", options: ['Quickly', 'On', 'Happy'], answer: 'On' },
+                    { question: "Choose the correct sentence:", options: ['He can sings well.', 'He can sing well.', 'He can sung well.'], answer: 'He can sing well.' },
+                    { question: "What is the opposite of 'cold'?", options: ['Hot', 'Warm', 'Cool'], answer: 'Hot' },
+                    { question: "What is the past tense of 'eat'?", options: ['Eats', 'Eaten', 'Ate'], answer: 'Ate' },
+                    { question: "What is the correct form of the verb: 'I ____ to school every day.'", options: ['go', 'goes', 'went'], answer: 'go' }
+                ];
+            }
+
+            // Display questions dynamically
+            quizQuestionsContainer.innerHTML = '';
+            questions.forEach(function(q, index) {
+                let questionHTML = `
+                    <div class="question-container">
+                        <div class="question">
+                            <p><strong>${index + 1}. ${q.question}</strong></p>
+                            ${q.options.map(function(option) {
+                                return `<span class="answer-option" onclick="checkAnswer('${option}', '${q.answer}', this)">${option}</span>`;
+                            }).join('')}
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                `;
+                quizQuestionsContainer.innerHTML += questionHTML;
+            });
+        }
+
+        function checkAnswer(selected, correct, element) {
+            const feedbackElement = element.closest('.question').querySelector('.feedback');
+            if (selected === correct) {
+                element.classList.add('correct');
+                feedbackElement.textContent = "Correct!";
+                feedbackElement.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+                feedbackElement.textContent = "Incorrect!";
+                feedbackElement.classList.add('incorrect');
+            }
+            // Disable all other options after answering
+            const options = element.closest('.question').querySelectorAll('.answer-option');
+            options.forEach(option => option.style.pointerEvents = 'none');
+        }
+    </script>
+</body>
+</html>
